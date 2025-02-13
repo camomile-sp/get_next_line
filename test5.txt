@@ -1,0 +1,1 @@
+This is a very long line that doesn't contain a newline character at all.
