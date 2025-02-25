@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apavlova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:52:20 by apavlova          #+#    #+#             */
-/*   Updated: 2025/02/15 14:52:24 by apavlova         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:17:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ size_t	ft_strlen(const char *s)
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t			total_size;
-	size_t			i;
+//	size_t			i;
 	unsigned char	*ptr;
 
 	if (nmemb == 0 || size == 0)
@@ -121,7 +121,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	ptr = malloc(total_size);
 	if (!ptr)
 		return (NULL);
-	i = 0;
+//	i = 0;
 	ft_memset(ptr, 0, total_size);
 	return (ptr);
 }
