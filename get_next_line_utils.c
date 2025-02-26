@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: apavlova <apavlova@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 14:52:20 by apavlova          #+#    #+#             */
-/*   Updated: 2025/02/25 22:17:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/26 21:01:41 by apavlova         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	s_len = ft_strlen(s);
 	if (start >= s_len)
-		return (ft_calloc(1, sizeof(char)));
+		return (malloc(1));
 	if (len > s_len - start)
 		len = s_len - start;
-	subs = ft_calloc(len + 1, sizeof(char));
+	subs = malloc((len + 1) * sizeof(char));
 	if (!subs)
 		return (NULL);
 	i = 0;
@@ -71,6 +71,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 		start++;
 	}
+	subs[len] = '\0';
 	return (subs);
 }
 
@@ -105,38 +106,4 @@ size_t	ft_strlen(const char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	size_t			total_size;
-//	size_t			i;
-	unsigned char	*ptr;
-
-	if (nmemb == 0 || size == 0)
-		return (malloc(0));
-	total_size = nmemb * size;
-	if (size != 0 && total_size / size != nmemb)
-		return (NULL);
-	ptr = malloc(total_size);
-	if (!ptr)
-		return (NULL);
-//	i = 0;
-	ft_memset(ptr, 0, total_size);
-	return (ptr);
-}
-
-void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t	i;
-
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s)[i] = (unsigned char)c;
-		i++;
-	}
-	return (s);
 }
