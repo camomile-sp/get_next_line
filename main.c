@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: apavlova <apavlova@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 15:12:05 by apavlova          #+#    #+#             */
-/*   Updated: 2025/02/26 21:22:03 by apavlova         ###   ########.fr       */
+/*   Updated: 2025/03/01 18:09:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	int	fd;
 	char	*line;
 
-	fd = open("test1.txt", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	if (fd < 0)
 		return (-1);
 	while ((line = get_next_line(fd)) != NULL)

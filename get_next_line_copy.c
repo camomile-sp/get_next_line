@@ -16,36 +16,34 @@ char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char	*line;
-	char	*temp;
+	char	*buf;
 	char	*pos_n;
-	int	len;
+	char	*temp_stash;
 
-	len = 0;
-	temp = malloc(BUFFER_SIZE + 1);
-	if (!temp)
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
 		return (NULL);
-	while (read(fd, temp, BUFFER_SIZE) > 0)
+	while (read(fd, buf, BUFFER_SIZE) > 0)
 	{
-		temp[BUFFER_SIZE] = '\0';
+		buf[BUFFER_SIZE] = '\0';
 		if (!stash)
-			stash = ft_strdup(temp);
+			stash = ft_strdup(buf);
 		else
 			{
-				temp = ft_strjoin(temp, stash);
+				temp_stash = ft_strjoin(stash, buf);
 				free(stash);
-				stash = temp;
+				stash = temp_stash;
 			}
 		pos_n = ft_strchr(stash, '\n');
 		if (pos_n)
 		{
-			len = (pos_n - stash) + 1;
-			line = ft_substr(stash, 0, len);
-			temp = ft_substr(stash, len, (ft_strlen(stash)-len));
+			//fill_line
+			line = ft_substr(stash, 0, ((pos_n - stash) + 1));
+			temp_stash = ft_substr(stash, ((pos_n - stash) + 1), (ft_strlen(stash)-((pos_n - stash) + 1)));
 			free(stash);
-			stash = temp;
-			return (line);
+			stash = temp_stash;
 		}
 	}
-	free(temp);
-	return (NULL);
+	free(buf);
+	return (line);
 }
